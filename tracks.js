@@ -3,10 +3,12 @@
     var albumartist = artist;
     if (artist.match(/various|divers/i)) albumartist = 'Various Artists';
     var album = document.getElementsByClassName('album-title')[0].firstChild.nodeValue.replace(/^\s+|\s+$/g, '');
+    var labo = document.getElementsByClassName('product-meta')[0];
+    var label = labo.getElementsByTagName('a')[0].firstChild.nodeValue;
     var year = document.getElementsByClassName('product-meta')[0].firstChild.nextSibling.nextSibling.nodeValue.match(/\d{4}/);
     if (!year) year = '';
     var tracks = document.getElementsByClassName('track-title');
-    var str = albumartist + '<br/>' + album + '<br/>' + year + '<br/><br/>';
+    var str = albumartist + '<br/>' + album + '<br/>' + label + '<br/>' + year + '<br/><br/>';
     for (var i = 0; i < tracks.length; i++) {
         if (albumartist == 'Various Artists') artist = document.getElementsByClassName('track-details hide')[i].firstChild.nextSibling.firstChild.nodeValue.split(',')[0];
         var track = tracks[i].firstChild.nodeValue.replace(/^\s+|\s+$/g, '');
