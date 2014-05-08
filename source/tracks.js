@@ -8,14 +8,19 @@
     var year = document.getElementsByClassName('product-meta')[0].firstChild.nextSibling.nextSibling.nodeValue.match(/\d{4}/);
     if (!year) year = '';
     var tracks = document.getElementsByClassName('track-title');
+    var lengths = document.getElementsByClassName('duration');
     var str = albumartist + '<br/>' + album + '<br/>' + label + '<br/>' + year + '<br/><br/>';
     for (var i = 0; i < tracks.length; i++) {
         artist = document.getElementsByClassName('track-details hide')[i].firstChild.nextSibling.firstChild.nodeValue.split(',')[0];
         var track = tracks[i].firstChild.nodeValue.replace(/^\s+|\s+$/g, '');
+        var length = lengths[i].firstChild.nodeValue.replace("00:", '');
         var trackextra = '';
         if (tracks[i].firstChild.nextSibling) trackextra = tracks[i].firstChild.nextSibling.firstChild.nodeValue.replace(/^\s+|\s+$/g, '');
         if (i < 9) str += '0';
-        str += (i + 1) + ' ' + artist + ' - ' + track;
+        if(artist == albumartist)
+            str += (i + 1) + ' ' + track + ' [' + length + ']';
+        else
+            str += (i + 1) + ' ' + artist + ' - ' + track + ' [' + length + ']';
         if (trackextra) str += ' ' + trackextra;
         if (i < tracks.length - 1) str += '<br/>';
     }
