@@ -10,7 +10,7 @@
     var tracks = document.getElementsByClassName('track-title');
     var str = albumartist + '<br/>' + album + '<br/>' + label + '<br/>' + year + '<br/><br/>';
     for (var i = 0; i < tracks.length; i++) {
-        if (albumartist == 'Various Artists') artist = document.getElementsByClassName('track-details hide')[i].firstChild.nextSibling.firstChild.nodeValue.split(',')[0];
+        artist = document.getElementsByClassName('track-details hide')[i].firstChild.nextSibling.firstChild.nodeValue.split(',')[0];
         var track = tracks[i].firstChild.nodeValue.replace(/^\s+|\s+$/g, '');
         var trackextra = '';
         if (tracks[i].firstChild.nextSibling) trackextra = tracks[i].firstChild.nextSibling.firstChild.nodeValue.replace(/^\s+|\s+$/g, '');
