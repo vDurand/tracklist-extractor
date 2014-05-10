@@ -3,8 +3,8 @@ tracklistExtractor
 
 *Javascript track listing using html classes.*
 
-Two version : One to add as a bookmark, the other as a Greasemonkey script.
------------
+_Two version :_ One to add as a bookmark, the other as a Greasemonkey script.
+
 
 Display (in order) :
  * Artist
