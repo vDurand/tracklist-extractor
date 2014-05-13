@@ -13,3 +13,5 @@ Display (in order) :
  * Year
  * Tracklist : 
   * Track number. Artist - Title (Remixer) [Track length]
+
+*v0.1.3 works perfectly on OSX, need to be fixed on Windows*
