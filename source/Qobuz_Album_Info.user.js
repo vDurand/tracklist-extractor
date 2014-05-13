@@ -3,13 +3,13 @@
 // @description Extract info from qobuz album web page
 // @namespace none
 // @include http://www.qobuz.com/album/*
-// @version 0.1
+// @version 0.1.3
 // @grant GM_addStyle
 // ==/UserScript==
 /*jslint browser: true, regexp: true */
-/*globals qbPlayer */
 document.addEventListener("DOMContentLoaded", function () {
     'use strict';
+
     function info_album() {
         var artist = document.getElementsByClassName('artist-name')[0].firstChild.nodeValue.replace(/^\s+|\s+$/g, '');
         var albumartist = artist;
@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
         d.title = albumartist + ' - ' + album;
         d.body.innerHTML = str;
     }
+
     var zNode       = document.createElement ('div');
     zNode.innerHTML = '<button class="GButt" id="myButton" type="button">'
                     + 'Get Album Info</button>'
@@ -50,21 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
     zNode.setAttribute ('id', 'myContainer');
     document.body.appendChild (zNode);
 
-    //--- Activate the newly added button.
-    document.getElementById ("myButton").addEventListener (
-        "click", info_album, false
-    );
-
-    function ButtonClickAction (zEvent) {
-        /*--- For our dummy action, we'll just add a line of text to the top
-            of the screen.
-        */
-        var zNode       = document.createElement ('p');
-        zNode.innerHTML = 'The button was clicked.';
-        document.getElementById ("myContainer").appendChild (zNode);
-    }
-
-    //--- Style our newly added elements using CSS.
     GM_addStyle ( multilineStr ( function () {/*!
         #myContainer {
             position:               absolute;
@@ -136,4 +122,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 ;
         return str;
     }
+
+    document.getElementById ("myButton").addEventListener (
+        "click", info_album, false
+    );
 });
